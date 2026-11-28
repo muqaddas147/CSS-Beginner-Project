@@ -464,6 +464,66 @@ body{
     color: white;
 }
 
+/* ===== Poster collage card ===== */
+.project-card.poster-card {
+    position: relative;
+    overflow: visible;              /* lets the enlarged poster come out of the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card .poster-collage {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding: 8px;
+}
+
+.project-card .poster-collage img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 7;            /* matches your poster shape, so no side gaps */
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    position: relative;
+    cursor: zoom-in;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* the typography sheet is a little wider, so show all of it */
+.project-card .poster-collage img.poster-wide {
+    object-fit: contain;
+    background: #f3efe8;
+}
+
+/* where each poster grows from, so it stays inside the card area */
+.project-card .poster-collage img:nth-child(1) { transform-origin: left top; }
+.project-card .poster-collage img:nth-child(2) { transform-origin: center top; }
+.project-card .poster-collage img:nth-child(3) { transform-origin: center top; }
+.project-card .poster-collage img:nth-child(4) { transform-origin: right top; }
+.project-card .poster-collage img:nth-child(5) { transform-origin: left bottom; }
+.project-card .poster-collage img:nth-child(6) { transform-origin: center bottom; }
+.project-card .poster-collage img:nth-child(7) { transform-origin: center bottom; }
+
+/* hover effects only on devices that have a mouse */
+@media (hover: hover) {
+    .project-card.poster-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+        z-index: 20;
+    }
+
+    .project-card .poster-collage img:hover {
+        transform: scale(2.4);
+        z-index: 30;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+}
+
+.project-card poster-card :hover {
+    transform: translateY(-5px);
+    border-color: #A78BFA;
+} 
 
 
 .journey-section {
